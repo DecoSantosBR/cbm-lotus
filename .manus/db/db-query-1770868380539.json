@@ -1,0 +1,24 @@
+{
+  "query": "SELECT * FROM certificates ORDER BY issuedAt DESC LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT * FROM certificates ORDER BY issuedAt DESC LIMIT 1;",
+  "rows": [
+    {
+      "id": "29",
+      "userId": "600020",
+      "discordId": "1095014725546430476",
+      "studentName": "Deco Santos",
+      "studentId": "23719",
+      "courseId": "5",
+      "courseName": "Mergulhador",
+      "instructorName": "Close Jackson",
+      "instructorRank": "Tenente-Coronel",
+      "issuedAt": "2026-02-12 03:47:59",
+      "issuedBy": "540057",
+      "certificateUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663187653950/4GoD6A6tFEssJHSgSaXWLj/certificates/certificado-23719-Mergulhador-1770868079101.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tdiscordId\tstudentName\tstudentId\tcourseId\tcourseName\tinstructorName\tinstructorRank\tissuedAt\tissuedBy\tcertificateUrl\n29\t600020\t1095014725546430476\tDeco Santos\t23719\t5\tMergulhador\tClose Jackson\tTenente-Coronel\t2026-02-12 03:47:59\t540057\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663187653950/4GoD6A6tFEssJHSgSaXWLj/certificates/certificado-23719-Mergulhador-1770868079101.png\n",
+  "stderr": "",
+  "execution_time_ms": 372
+}

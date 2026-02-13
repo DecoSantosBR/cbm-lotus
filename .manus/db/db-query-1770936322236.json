@@ -1,0 +1,28 @@
+{
+  "query": "SELECT userId, eventId, COUNT(*) as count, GROUP_CONCAT(id ORDER BY enrolledAt DESC) as enrollment_ids\nFROM course_enrollments\nGROUP BY userId, eventId\nHAVING COUNT(*) > 1\nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT userId, eventId, COUNT(*) as count, GROUP_CONCAT(id ORDER BY enrolledAt DESC) as enrollment_ids\nFROM course_enrollments\nGROUP BY userId, eventId\nHAVING COUNT(*) > 1\nORDER BY count DESC;",
+  "rows": [
+    {
+      "userId": "600020",
+      "eventId": "210003",
+      "count": "4",
+      "enrollment_ids": "210004,210005,210006,210007"
+    },
+    {
+      "userId": "600020",
+      "eventId": "180005",
+      "count": "2",
+      "enrollment_ids": "180008,180009"
+    },
+    {
+      "userId": "600020",
+      "eventId": "210002",
+      "count": "2",
+      "enrollment_ids": "210002,210003"
+    }
+  ],
+  "messages": [],
+  "stdout": "userId\teventId\tcount\tenrollment_ids\n600020\t210003\t4\t210004,210005,210006,210007\n600020\t180005\t2\t180008,180009\n600020\t210002\t2\t210002,210003\n",
+  "stderr": "",
+  "execution_time_ms": 408
+}

@@ -1,0 +1,118 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1770297353535,
+      "tag": "0000_uneven_electro",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1770297437474,
+      "tag": "0001_funny_dragon_lord",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770298696037,
+      "tag": "0002_stormy_james_howlett",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1770302476732,
+      "tag": "0003_neat_killmonger",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1770302919154,
+      "tag": "0004_tearful_doctor_faustus",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1770326968071,
+      "tag": "0005_certain_living_tribunal",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1770341279117,
+      "tag": "0006_medical_war_machine",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1770444717159,
+      "tag": "0007_previous_nemesis",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1770538006705,
+      "tag": "0008_slim_callisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1770668145688,
+      "tag": "0009_smiling_nekra",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1770670733281,
+      "tag": "0010_dizzy_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1770672691898,
+      "tag": "0011_futuristic_kat_farrell",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1770673426842,
+      "tag": "0012_open_maginty",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1770674282188,
+      "tag": "0013_daily_madame_masque",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1770864187293,
+      "tag": "0014_long_bruce_banner",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1770936307653,
+      "tag": "0015_wooden_stature",
+      "breakpoints": true
+    }
+  ]
+}

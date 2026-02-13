@@ -1,0 +1,38 @@
+{
+  "query": "SELECT * FROM certificates;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT * FROM certificates;",
+  "rows": [
+    {
+      "id": "1",
+      "userId": "600020",
+      "discordId": "1095014725546430476",
+      "studentName": "Deco Santos",
+      "studentId": "23719",
+      "courseId": "5",
+      "courseName": "Mergulhador",
+      "instructorName": "Close Jackson",
+      "instructorRank": "Tenente-Coronel",
+      "issuedAt": "2026-02-12 02:56:19",
+      "issuedBy": "540057",
+      "certificateUrl": "NULL"
+    },
+    {
+      "id": "2",
+      "userId": "600020",
+      "discordId": "1095014725546430476",
+      "studentName": "Deco Santos",
+      "studentId": "23719",
+      "courseId": "5",
+      "courseName": "Mergulhador",
+      "instructorName": "Close Jackson",
+      "instructorRank": "Tenente-Coronel",
+      "issuedAt": "2026-02-12 02:57:03",
+      "issuedBy": "540057",
+      "certificateUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tdiscordId\tstudentName\tstudentId\tcourseId\tcourseName\tinstructorName\tinstructorRank\tissuedAt\tissuedBy\tcertificateUrl\n1\t600020\t1095014725546430476\tDeco Santos\t23719\t5\tMergulhador\tClose Jackson\tTenente-Coronel\t2026-02-12 02:56:19\t540057\tNULL\n2\t600020\t1095014725546430476\tDeco Santos\t23719\t5\tMergulhador\tClose Jackson\tTenente-Coronel\t2026-02-12 02:57:03\t540057\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 354
+}

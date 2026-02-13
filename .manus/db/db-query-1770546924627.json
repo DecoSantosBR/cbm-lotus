@@ -1,0 +1,73 @@
+{
+  "query": "SELECT `id`, `name`, `email`, `approvalStatus`, `profileCompleted`, `role`, `rank` FROM `users`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT `id`, `name`, `email`, `approvalStatus`, `profileCompleted`, `role`, `rank` FROM `users`;",
+  "rows": [
+    {
+      "id": "180345",
+      "name": "Ryan Batista",
+      "email": "ryan.brandolth06@gmail.com",
+      "approvalStatus": "approved",
+      "profileCompleted": "0",
+      "role": "admin",
+      "rank": "Tenente-Coronel"
+    },
+    {
+      "id": "240020",
+      "name": "Flavio Combat",
+      "email": "flaviofarias092@gmail.com",
+      "approvalStatus": "approved",
+      "profileCompleted": "0",
+      "role": "admin",
+      "rank": "Coronel"
+    },
+    {
+      "id": "240053",
+      "name": "Mustafary",
+      "email": "arlisomboy@gmail.com",
+      "approvalStatus": "approved",
+      "profileCompleted": "0",
+      "role": "admin",
+      "rank": "Tenente-Coronel"
+    },
+    {
+      "id": "450002",
+      "name": "Drope Hmb",
+      "email": "pedromartinsb16@gmail.com",
+      "approvalStatus": "approved",
+      "profileCompleted": "0",
+      "role": "instructor",
+      "rank": "Capitão"
+    },
+    {
+      "id": "540057",
+      "name": "André Santos",
+      "email": "close.jackson2025@gmail.com",
+      "approvalStatus": "approved",
+      "profileCompleted": "1",
+      "role": "admin",
+      "rank": "Tenente-Coronel"
+    },
+    {
+      "id": "540073",
+      "name": "Mike Luiz",
+      "email": "washingtonljfvig25@hotmail.com",
+      "approvalStatus": "pending",
+      "profileCompleted": "0",
+      "role": "instructor",
+      "rank": "1º Tenente"
+    },
+    {
+      "id": "600009",
+      "name": "decosantosbr#0",
+      "email": "decossantos2@gmail.com",
+      "approvalStatus": "pending",
+      "profileCompleted": "0",
+      "role": "member",
+      "rank": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\tapprovalStatus\tprofileCompleted\trole\trank\n180345\tRyan Batista\tryan.brandolth06@gmail.com\tapproved\t0\tadmin\tTenente-Coronel\n240020\tFlavio Combat\tflaviofarias092@gmail.com\tapproved\t0\tadmin\tCoronel\n240053\tMustafary\tarlisomboy@gmail.com\tapproved\t0\tadmin\tTenente-Coronel\n450002\tDrope Hmb\tpedromartinsb16@gmail.com\tapproved\t0\tinstructor\tCapitão\n540057\tAndré Santos\tclose.jackson2025@gmail.com\tapproved\t1\tadmin\tTenente-Coronel\n540073\tMike Luiz\twashingtonljfvig25@hotmail.com\tpending\t0\tinstructor\t1º Tenente\n600009\tdecosantosbr#0\tdecossantos2@gmail.com\tpending\t0\tmember\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

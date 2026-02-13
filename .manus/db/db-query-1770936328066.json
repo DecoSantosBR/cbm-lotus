@@ -1,0 +1,66 @@
+{
+  "query": "SELECT id, userId, eventId, status, enrolledAt\nFROM course_enrollments\nWHERE (userId, eventId) IN (\n  SELECT userId, eventId\n  FROM course_enrollments\n  GROUP BY userId, eventId\n  HAVING COUNT(*) > 1\n)\nORDER BY userId, eventId, enrolledAt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT id, userId, eventId, status, enrolledAt\nFROM course_enrollments\nWHERE (userId, eventId) IN (\n  SELECT userId, eventId\n  FROM course_enrollments\n  GROUP BY userId, eventId\n  HAVING COUNT(*) > 1\n)\nORDER BY userId, eventId, enrolledAt DESC;",
+  "rows": [
+    {
+      "id": "180008",
+      "userId": "600020",
+      "eventId": "180005",
+      "status": "confirmed",
+      "enrolledAt": "2026-02-12 07:28:15"
+    },
+    {
+      "id": "180009",
+      "userId": "600020",
+      "eventId": "180005",
+      "status": "rejected",
+      "enrolledAt": "2026-02-12 07:28:15"
+    },
+    {
+      "id": "210002",
+      "userId": "600020",
+      "eventId": "210002",
+      "status": "rejected",
+      "enrolledAt": "2026-02-12 22:21:53"
+    },
+    {
+      "id": "210003",
+      "userId": "600020",
+      "eventId": "210002",
+      "status": "rejected",
+      "enrolledAt": "2026-02-12 22:21:53"
+    },
+    {
+      "id": "210004",
+      "userId": "600020",
+      "eventId": "210003",
+      "status": "pending",
+      "enrolledAt": "2026-02-12 22:42:45"
+    },
+    {
+      "id": "210005",
+      "userId": "600020",
+      "eventId": "210003",
+      "status": "pending",
+      "enrolledAt": "2026-02-12 22:42:45"
+    },
+    {
+      "id": "210006",
+      "userId": "600020",
+      "eventId": "210003",
+      "status": "pending",
+      "enrolledAt": "2026-02-12 22:42:45"
+    },
+    {
+      "id": "210007",
+      "userId": "600020",
+      "eventId": "210003",
+      "status": "pending",
+      "enrolledAt": "2026-02-12 22:42:45"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\teventId\tstatus\tenrolledAt\n180008\t600020\t180005\tconfirmed\t2026-02-12 07:28:15\n180009\t600020\t180005\trejected\t2026-02-12 07:28:15\n210002\t600020\t210002\trejected\t2026-02-12 22:21:53\n210003\t600020\t210002\trejected\t2026-02-12 22:21:53\n210004\t600020\t210003\tpending\t2026-02-12 22:42:45\n210005\t600020\t210003\tpending\t2026-02-12 22:42:45\n210006\t600020\t210003\tpending\t2026-02-12 22:42:45\n210007\t600020\t210003\tpending\t2026-02-12 22:42:45\n",
+  "stderr": "",
+  "execution_time_ms": 342
+}

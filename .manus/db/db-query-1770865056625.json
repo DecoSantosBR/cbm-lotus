@@ -1,0 +1,26 @@
+{
+  "query": "SELECT id, studentName, studentId, discordId, courseName, issuedAt FROM certificates ORDER BY issuedAt DESC LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT id, studentName, studentId, discordId, courseName, issuedAt FROM certificates ORDER BY issuedAt DESC LIMIT 5;",
+  "rows": [
+    {
+      "id": "2",
+      "studentName": "Deco Santos",
+      "studentId": "23719",
+      "discordId": "1095014725546430476",
+      "courseName": "Mergulhador",
+      "issuedAt": "2026-02-12 02:57:03"
+    },
+    {
+      "id": "1",
+      "studentName": "Deco Santos",
+      "studentId": "23719",
+      "discordId": "1095014725546430476",
+      "courseName": "Mergulhador",
+      "issuedAt": "2026-02-12 02:56:19"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tstudentName\tstudentId\tdiscordId\tcourseName\tissuedAt\n2\tDeco Santos\t23719\t1095014725546430476\tMergulhador\t2026-02-12 02:57:03\n1\tDeco Santos\t23719\t1095014725546430476\tMergulhador\t2026-02-12 02:56:19\n",
+  "stderr": "",
+  "execution_time_ms": 364
+}

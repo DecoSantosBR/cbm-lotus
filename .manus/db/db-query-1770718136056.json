@@ -1,0 +1,40 @@
+{
+  "query": "SELECT * FROM courses WHERE nome LIKE '%Teste%' OR nome LIKE '%teste%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT * FROM courses WHERE nome LIKE '%Teste%' OR nome LIKE '%teste%';",
+  "rows": [
+    {
+      "id": "30001",
+      "nome": "Teste Upload Arquivo",
+      "descricao": "Curso para testar upload de arquivos",
+      "valor": "R$ 100.000",
+      "requisitos": "Nenhum",
+      "createdAt": "2026-02-09 20:21:38",
+      "updatedAt": "2026-02-09 20:21:38",
+      "imageUrl": "NULL"
+    },
+    {
+      "id": "30002",
+      "nome": "Teste Upload Arquivo",
+      "descricao": "Curso para testar upload de arquivos",
+      "valor": "R$ 100.000",
+      "requisitos": "Nenhum",
+      "createdAt": "2026-02-09 20:22:02",
+      "updatedAt": "2026-02-09 20:22:02",
+      "imageUrl": "NULL"
+    },
+    {
+      "id": "30003",
+      "nome": "Curso Teste para Eventos",
+      "descricao": "Curso de teste",
+      "valor": "100000",
+      "requisitos": "Nenhum",
+      "createdAt": "2026-02-09 21:03:27",
+      "updatedAt": "2026-02-09 21:03:27",
+      "imageUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tnome\tdescricao\tvalor\trequisitos\tcreatedAt\tupdatedAt\timageUrl\n30001\tTeste Upload Arquivo\tCurso para testar upload de arquivos\tR$ 100.000\tNenhum\t2026-02-09 20:21:38\t2026-02-09 20:21:38\tNULL\n30002\tTeste Upload Arquivo\tCurso para testar upload de arquivos\tR$ 100.000\tNenhum\t2026-02-09 20:22:02\t2026-02-09 20:22:02\tNULL\n30003\tCurso Teste para Eventos\tCurso de teste\t100000\tNenhum\t2026-02-09 21:03:27\t2026-02-09 21:03:27\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

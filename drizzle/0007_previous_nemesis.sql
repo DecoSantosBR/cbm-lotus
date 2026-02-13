@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `rank` enum('Comandante Geral','Subcomandante Geral','Coronel','Tenente-Coronel','Major','Capitão','1º Tenente','2º Tenente','Subtenente','Cabo','Soldado');

@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, nome FROM courses WHERE nome LIKE '%Teste%' OR nome LIKE '%teste%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SELECT id, nome FROM courses WHERE nome LIKE '%Teste%' OR nome LIKE '%teste%';",
+  "rows": [
+    {
+      "id": "30001",
+      "nome": "Teste Upload Arquivo"
+    },
+    {
+      "id": "30002",
+      "nome": "Teste Upload Arquivo"
+    },
+    {
+      "id": "30003",
+      "nome": "Curso Teste para Eventos"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tnome\n30001\tTeste Upload Arquivo\n30002\tTeste Upload Arquivo\n30003\tCurso Teste para Eventos\n",
+  "stderr": "",
+  "execution_time_ms": 441
+}

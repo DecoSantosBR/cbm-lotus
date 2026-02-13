@@ -1,0 +1,171 @@
+import puppeteer from "puppeteer";
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export interface CertificateData {
+  studentName: string;
+  studentId: string;
+  courseName: string;
+  instructorName: string;
+  instructorRank: string;
+}
+
+export async function generateCertificate(data: CertificateData): Promise<Buffer> {
+  console.log("[CertificateGenerator-Puppeteer] Starting certificate generation");
+  console.log("[CertificateGenerator-Puppeteer] Data:", JSON.stringify(data));
+  
+
+
+  const html = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Playfair Display', serif;
+      background: transparent;
+    }
+    
+    .certificate {
+      width: 1042px;
+      height: 586px;
+      background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663187653950/DHBXbOcJsiCfHbTV.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #8b0000;
+    }
+    
+    .title {
+      font-size: 68px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      position: relative;
+      top: -10px;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
+    
+    .student-name {
+      font-size: 55px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: -10px;
+    }
+    
+    .student-id {
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+    
+    .course-section {
+      margin-top: 10px;
+    }
+    
+    .course-text {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }    
+    .course-name {
+      font-size: 50px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    
+    .instructor-name {
+      font-size: 36px;
+      font-family: 'Great Vibes', cursive;
+      font-weight: 400;
+      margin-top: 0px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    
+    .instructor-rank {
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate">
+    <div class="title">CERTIFICADO</div>
+    <div class="subtitle">Certificamos que</div>
+    <div class="student-name">${data.studentName}</div>
+    <div class="student-id">Matrícula: ${data.studentId}</div>
+    <div class="course-section">
+      <div class="course-text">Concluiu com êxito o curso de</div>
+      <div class="course-name">${data.courseName}</div>
+      <div class="instructor-name">${data.instructorName}</div>
+      <div class="instructor-rank">${data.instructorRank}</div>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+
+  let browser;
+  try {
+    console.log("[CertificateGenerator-Puppeteer] Launching browser...");
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu'
+      ]
+    });
+
+    const page = await browser.newPage();
+    console.log("[CertificateGenerator-Puppeteer] Setting viewport...");
+    await page.setViewport({ width: 1042, height: 586 });
+
+    console.log("[CertificateGenerator-Puppeteer] Setting content...");
+    await page.setContent(html, { waitUntil: 'networkidle0' });
+
+    console.log("[CertificateGenerator-Puppeteer] Taking screenshot...");
+    const screenshot = await page.screenshot({
+      type: 'png',
+      fullPage: false
+    });
+
+    const buffer = Buffer.from(screenshot);
+    console.log("[CertificateGenerator-Puppeteer] Certificate generated successfully");
+    console.log("[CertificateGenerator-Puppeteer] Buffer size:", buffer.length, "bytes");
+
+    return buffer;
+  } catch (error) {
+    console.error("[CertificateGenerator-Puppeteer] Error generating certificate:", error);
+    throw error;
+  } finally {
+    if (browser) {
+      await browser.close();
+      console.log("[CertificateGenerator-Puppeteer] Browser closed");
+    }
+  }
+}

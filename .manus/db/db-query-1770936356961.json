@@ -1,0 +1,24 @@
+{
+  "query": "SHOW CREATE TABLE course_enrollments;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 44TTARZqZm4zxSK.d2eb6dda4700 --database 4GoD6A6tFEssJHSgSaXWLj --execute SHOW CREATE TABLE course_enrollments;",
+  "rows": [
+    {
+      "Table": "course_enrollments",
+      "Create Table": "CREATE TABLE `course_enrollments` ("
+    }
+  ],
+  "messages": [
+    "  `id` int(11) NOT NULL AUTO_INCREMENT,",
+    "  `userId` int(11) NOT NULL,",
+    "  `status` enum('pending','confirmed','cancelled','rejected') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',",
+    "  `enrolledAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,",
+    "  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,",
+    "  `eventId` int(11) NOT NULL,",
+    "  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,",
+    "  UNIQUE KEY `course_enrollments_userId_eventId_unique` (`userId`,`eventId`)",
+    ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=240001"
+  ],
+  "stdout": "Table\tCreate Table\ncourse_enrollments\tCREATE TABLE `course_enrollments` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `userId` int(11) NOT NULL,\n  `status` enum('pending','confirmed','cancelled','rejected') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',\n  `enrolledAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  `eventId` int(11) NOT NULL,\n  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,\n  UNIQUE KEY `course_enrollments_userId_eventId_unique` (`userId`,`eventId`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=240001\n",
+  "stderr": "",
+  "execution_time_ms": 348
+}
