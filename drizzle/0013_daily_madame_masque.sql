@@ -1,0 +1,1 @@
+ALTER TABLE `course_enrollments` MODIFY COLUMN `status` enum('pending','confirmed','cancelled','rejected') NOT NULL DEFAULT 'pending';

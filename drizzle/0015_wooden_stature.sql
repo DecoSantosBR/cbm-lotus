@@ -1,0 +1,1 @@
+ALTER TABLE `course_enrollments` ADD CONSTRAINT `course_enrollments_userId_eventId_unique` UNIQUE(`userId`,`eventId`);
