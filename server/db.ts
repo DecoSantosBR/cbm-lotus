@@ -7,9 +7,22 @@ let _db: ReturnType<typeof drizzle> | null = null;
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
-  if (!_db && process.env.DATABASE_URL) {
+  // Detect if we're in Manus sandbox (development) by checking hostname
+  const isSandbox = process.env.HOSTNAME?.includes('manus.computer') || 
+                    process.env.HOSTNAME?.includes('sandbox') ||
+                    process.env.NODE_ENV === 'development';
+  
+  // Use local DATABASE_URL in sandbox, RAILWAY_DATABASE_URL in production
+  const databaseUrl = isSandbox 
+    ? process.env.DATABASE_URL 
+    : (process.env.RAILWAY_DATABASE_URL || process.env.DATABASE_URL);
+  
+  if (!_db && databaseUrl) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      _db = drizzle(databaseUrl);
+      const dbType = databaseUrl?.includes('railway') ? 'Railway MySQL' : 'Local database';
+      const env = isSandbox ? 'sandbox' : 'production';
+      console.log(`[Database] Connected to: ${dbType} (${env})`);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -172,7 +185,7 @@ export async function getAllCourses() {
   return await db.select().from(courses);
 }
 
-export async function getCourseById(id: number) {
+export async function getCourseById(id: string) {
   const db = await getDb();
   if (!db) return undefined;
   const result = await db.select().from(courses).where(eq(courses.id, id)).limit(1);
@@ -187,7 +200,7 @@ export async function createCourse(course: InsertCourse): Promise<number> {
 }
 
 // Course Materials
-export async function getCourseMaterial(courseId: number) {
+export async function getCourseMaterial(courseId: string) {
   const db = await getDb();
   if (!db) return undefined;
   const result = await db.select().from(courseMaterials).where(eq(courseMaterials.courseId, courseId)).limit(1);
@@ -250,7 +263,7 @@ export async function createCourseImage(image: InsertCourseImage) {
   return result;
 }
 
-export async function getCourseImages(courseId: number) {
+export async function getCourseImages(courseId: string) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   return await db.select().from(courseImages).where(eq(courseImages.courseId, courseId));
@@ -270,7 +283,7 @@ export async function createCourseFile(file: InsertCourseFile) {
   return result.insertId;
 }
 
-export async function getCourseFiles(courseId: number) {
+export async function getCourseFiles(courseId: string) {
   const db = await getDb();
   if (!db) return [];
   return await db.select().from(courseFiles).where(eq(courseFiles.courseId, courseId));
@@ -402,4 +415,17 @@ export async function getEnrollmentCountByEvent(eventId: number): Promise<number
     ));
   
   return result?.count || 0;
+}
+
+// Buscar usuário por matrícula (studentId)
+export async function getUserByStudentId(studentId: string) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db.select()
+    .from(users)
+    .where(eq(users.studentId, studentId))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
 }

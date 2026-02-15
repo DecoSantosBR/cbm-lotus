@@ -1,9 +1,11 @@
-import { db } from "./db";
+import { getDb } from "./db";
 import { sql } from "drizzle-orm";
 
 async function initDatabase() {
   try {
     console.log("Criando tabelas...");
+    const db = await getDb();
+    if (!db) throw new Error("Database not available");
     
     // Criar tabelas
     await db.execute(sql`CREATE TABLE IF NOT EXISTS users (

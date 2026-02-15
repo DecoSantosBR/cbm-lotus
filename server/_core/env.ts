@@ -7,4 +7,8 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  discordBotToken: process.env.DISCORD_BOT_TOKEN ?? "",
+  discordChannelEvents: process.env.DISCORD_CHANNEL_EVENTS ?? "",
+  discordChannelEnrollments: process.env.DISCORD_CHANNEL_ENROLLMENTS ?? "",
+  discordChannelCertificates: process.env.DISCORD_CHANNEL_CERTIFICATES ?? "",
 };
