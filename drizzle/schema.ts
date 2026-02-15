@@ -44,7 +44,7 @@ export type InsertUser = typeof users.$inferInsert;
 
 // Tabela de cursos
 export const courses = mysqlTable("courses", {
-  id: int("id").autoincrement().primaryKey(),
+  id: varchar("id", { length: 36 }).primaryKey(),
   nome: varchar("nome", { length: 255 }).notNull(),
   descricao: text("descricao"),
   valor: varchar("valor", { length: 50 }),
@@ -60,7 +60,7 @@ export type InsertCourse = typeof courses.$inferInsert;
 // Tabela de materiais de curso (instruções + vídeos)
 export const courseMaterials = mysqlTable("course_materials", {
   id: int("id").autoincrement().primaryKey(),
-  courseId: int("courseId").notNull(),
+  courseId: varchar("courseId", { length: 36 }).notNull(),
   instructions: text("instructions"),
   video1Title: varchar("video1Title", { length: 255 }),
   video1Url: text("video1Url"),
@@ -76,7 +76,7 @@ export type InsertCourseMaterial = typeof courseMaterials.$inferInsert;
 // Tabela de imagens do curso
 export const courseImages = mysqlTable("course_images", {
   id: int("id").autoincrement().primaryKey(),
-  courseId: int("courseId").notNull(),
+  courseId: varchar("courseId", { length: 36 }).notNull(),
   imageUrl: text("imageUrl").notNull(),
   caption: varchar("caption", { length: 255 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -88,7 +88,7 @@ export type InsertCourseImage = typeof courseImages.$inferInsert;
 // Tabela de solicitações de inscrição
 export const courseApplications = mysqlTable("course_applications", {
   id: int("id").autoincrement().primaryKey(),
-  courseId: int("courseId").notNull(),
+  courseId: varchar("courseId", { length: 36 }).notNull(),
   nomeCompleto: varchar("nomeCompleto", { length: 255 }).notNull(),
   idJogador: varchar("idJogador", { length: 100 }).notNull(),
   telefone: varchar("telefone", { length: 50 }).notNull(),
@@ -104,7 +104,7 @@ export type InsertCourseApplication = typeof courseApplications.$inferInsert;
 // Tabela de arquivos anexados aos cursos
 export const courseFiles = mysqlTable("course_files", {
   id: int("id").autoincrement().primaryKey(),
-  courseId: int("courseId").notNull(),
+  courseId: varchar("courseId", { length: 36 }).notNull(),
   fileName: varchar("fileName", { length: 255 }).notNull(),
   fileUrl: text("fileUrl").notNull(),
   fileKey: varchar("fileKey", { length: 500 }).notNull(),
@@ -119,7 +119,7 @@ export type InsertCourseFile = typeof courseFiles.$inferInsert;
 // Tabela de eventos/agendamentos de cursos
 export const courseEvents = mysqlTable("course_events", {
   id: int("id").autoincrement().primaryKey(),
-  courseId: int("courseId").notNull(),
+  courseId: varchar("courseId", { length: 36 }).notNull(),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   startDate: timestamp("startDate").notNull(),
@@ -127,6 +127,8 @@ export const courseEvents = mysqlTable("course_events", {
   instructorId: int("instructorId").notNull(),
   location: varchar("location", { length: 255 }),
   maxParticipants: int("maxParticipants"),
+  auxiliar: varchar("auxiliar", { length: 255 }), // Nome do auxiliar
+  ID_auxiliar: varchar("ID_auxiliar", { length: 100 }), // Matrícula do auxiliar
   createdBy: int("createdBy").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
@@ -159,10 +161,12 @@ export const certificates = mysqlTable("certificates", {
   discordId: varchar("discordId", { length: 64 }), // ID do Discord do usuário (pode ser null se ainda não vinculado)
   studentName: varchar("studentName", { length: 255 }).notNull(),
   studentId: varchar("studentId", { length: 100 }).notNull(), // Matrícula do aluno
-  courseId: int("courseId"), // ID do curso (pode ser null se curso foi deletado)
+  courseId: varchar("courseId", { length: 36 }), // ID do curso (pode ser null se curso foi deletado)
   courseName: varchar("courseName", { length: 255 }).notNull(),
   instructorName: varchar("instructorName", { length: 255 }).notNull(),
   instructorRank: varchar("instructorRank", { length: 100 }).notNull(),
+  auxiliar: varchar("auxiliar", { length: 255 }), // Nome do auxiliar
+  ID_auxiliar: varchar("ID_auxiliar", { length: 100 }), // Matrícula do auxiliar
   issuedAt: timestamp("issuedAt").defaultNow().notNull(),
   issuedBy: int("issuedBy").notNull(), // ID do usuário que emitiu o certificado
   certificateUrl: text("certificateUrl"), // URL da imagem do certificado no S3 (opcional)

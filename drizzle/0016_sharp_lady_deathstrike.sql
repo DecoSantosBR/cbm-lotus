@@ -1,0 +1,1 @@
+ALTER TABLE `course_events` MODIFY COLUMN `courseId` varchar(36) NOT NULL;
