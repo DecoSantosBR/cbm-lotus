@@ -10,10 +10,17 @@ import { ArrowLeft, Edit, Save, X, ExternalLink, Upload, Trash2, Image as ImageI
 
 export default function CoursePage() {
   const [, params] = useRoute("/curso/:id");
-  const courseId = params?.id ? parseInt(params.id) : 0;
+  const courseId = params?.id || "";
   const [, setLocation] = useLocation();
   
   const { user, isAuthenticated, loading } = useAuth();
+  
+  // Redirect to home if courseId is invalid
+  useEffect(() => {
+    if (!courseId || courseId === "NaN" || courseId === "undefined") {
+      setLocation("/");
+    }
+  }, [courseId, setLocation]);
   
   // Redirect to login if not authenticated
   useEffect(() => {

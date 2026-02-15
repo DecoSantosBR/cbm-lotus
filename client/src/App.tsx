@@ -23,8 +23,8 @@ function Router() {
       <Route path="/curso/:id" component={CoursePage} />
       <Route path="/admin/usuarios" component={AdminUsers} />
 
-      <Route path="/gerenciar-solicitacoes" component={ManageApplications} />
-      <Route path="/agendamento" component={CalendarPage} />
+      <Route path="/admin/inscricoes" component={ManageApplications} />
+      <Route path="/calendario" component={CalendarPage} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -175,7 +175,7 @@ export default function CalendarPage() {
     const endDateTime = fromZonedTime(endDateLocal, timeZone).toISOString();
 
     createEvent.mutate({
-      courseId: parseInt(formData.courseId),
+      courseId: formData.courseId,
       title: formData.title,
       description: formData.description,
       startDate: startDateTime,
@@ -205,7 +205,7 @@ export default function CalendarPage() {
 
     updateEvent.mutate({
       id: editingEvent.id,
-      courseId: formData.courseId ? parseInt(formData.courseId) : undefined,
+      courseId: formData.courseId || undefined,
       title: formData.title || undefined,
       description: formData.description || undefined,
       startDate: startDateTime,

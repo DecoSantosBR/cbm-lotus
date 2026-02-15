@@ -33,7 +33,7 @@ export default function ManageApplications() {
     }
   };
 
-  const getCourseName = (courseId: number) => {
+  const getCourseName = (courseId: string) => {
     const course = courses?.find((c) => c.id === courseId);
     return course?.nome || "Curso não encontrado";
   };
